@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    container_name: mi_app_heroku
+    ports:
+      - "5000:5000"
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: always
+    command: gunicorn -b 0.0.0.0:5000 mi_app_heroku:app
